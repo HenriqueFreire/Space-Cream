@@ -36,10 +36,31 @@ header{
   width: 100%;
 }
 
-header svg{
+header .logo{
   height: 13.7rem;
   margin: 3.2rem auto;
+  position: relative;
   width: 13.7rem;
+}
+
+header .logo img{
+  left: 50%;
+  object-fit:cover;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logo img:nth-child(1){
+  z-index: 1;
+}
+
+.logo img:nth-child(2){
+  animation: orbital1 7s ease-in-out infinite;
+}
+
+.logo img:nth-child(3){
+  animation: orbital2 7s ease-in-out infinite;
 }
 
 .trip{
@@ -60,6 +81,10 @@ header svg{
   line-height: 3.4rem;
   margin-top: .8rem;
   text-shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.25);
+}
+
+header .container{
+  display: none;
 }
 
 /*___MAIN________________________________________________*/
@@ -86,8 +111,7 @@ main{
 }
 
 .ice-cream{
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 3rem;
   margin-block: 6rem;
   width: 32rem;
@@ -100,6 +124,7 @@ main{
 
 .card img{
   object-fit: cover;
+  width: 100%;
 }
 
 .card h2{
@@ -117,6 +142,10 @@ main{
   text-transform: uppercase;
   top: 1.6rem;
   right: 1.6rem;
+}
+
+footer{
+  display: none;
 }
 
 @keyframes topdown {
@@ -142,3 +171,118 @@ main{
     transform: translateY(0);
   }
 }
+
+@keyframes orbital1 {
+  0%{
+   transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50%{
+    transform: translate(-50%, -50%) rotate(-31deg);
+  }
+  100%{
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+}
+
+@keyframes orbital2 {
+  0%{
+   transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50%{
+    transform: translate(-50%, -50%) rotate(31deg);
+  }
+  100%{
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+}
+
+@media(min-width: 1000px){
+  .page{
+    display: flex;
+    flex-direction: row;
+  }
+
+  header{
+    height: 100vh;
+    justify-content: flex-start;
+    width: 37rem;
+  }
+
+  header .container{
+    
+    display: block;
+    padding: 2.8rem;
+  }
+
+  header .container p{
+    color: white;
+  }
+
+  main{
+    margin: 0;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
+  }
+
+  main .container{
+    display: none;
+  }
+
+  .ice-cream {
+    /*grid-template-areas: "A B " "C B" "C D";*/
+    grid-template-areas: "A B E" "D B F" "D C F";
+    margin-inline: auto;
+    width: 67rem;
+  }
+
+  .card{
+    width: 22rem;
+  }
+
+  .ice-cream .card:nth-child(1) {
+    grid-area: A;
+  }
+
+  .ice-cream .card:nth-child(2) {
+    grid-area: B;
+  }
+
+  .ice-cream .card:nth-child(3) {
+    grid-area: C;
+  }
+
+  .ice-cream .card:nth-child(4) {
+    grid-area: D;
+  }
+
+  .ice-cream .card:nth-child(5) {
+    grid-area: E;
+  }
+
+  .ice-cream .card:nth-child(6) {
+    grid-area: F;
+  }
+
+  footer{
+    display: block;
+  }
+
+  footer p{
+    color: var(--text-color);
+    font-family: var(--font-paragraph);
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 2.8rem;
+  }
+  footer p a{
+    color: var(--text-color);
+    font-weight: 700;
+    text-decoration: none;
+  }
+}
+
+
+
